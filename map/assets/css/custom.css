@@ -1,0 +1,362 @@
+
+
+body{
+	/*font-family: 'Lato', sans-serif; */
+	font-family: 'Courgette', cursive;
+	overflow:hidden;
+
+}
+
+.center{
+	text-align:center;
+}
+h4{
+	font-size:1.2em;
+	/* font-family: 'Noticia Text', serif; */
+	font-family: 'Courgette', cursive;
+}
+
+h1 {
+  /* margin: 20px; font-family: "Paytone One", serif;*/
+  font-family: 'Playfair Display';
+  color: #202020;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align:center;
+}
+
+h1 span {
+  display: block;
+  margin: 11px 0 17px 0;
+  font-size: 0.7em;
+  line-height: 0.8em;
+  color: #f1ebe5;
+   text-shadow: 0 13.36px 8.896px #c4b59d,0 -2px 1px #fff; 
+  /* text-shadow: 0 0.05em 0.025em #c4b59d,0 0.01em 0.05em #fff; */
+  letter-spacing: 0.05em;
+}
+
+text {
+	font-family: 'Courgette', cursive;
+	font-size:18px;
+	cursor:default;
+	pointer-events:none;
+	alignment-baseline:middle;
+	text-anchor:middle;
+ 	text-shadow: 4px 4px 6px #999;
+}
+.smalllabels{
+	font-size:14px
+	text-shadow: 4px 4px 6px #eee;
+	fill:#503400;
+}
+
+circle{
+	cursor:pointer;
+}
+a.interactive_canvas:active{
+	cursor:grab;
+}
+svg{
+	background-color:rgba(225, 210,179,0.9);
+}
+
+.topright{
+	position:absolute;
+	top:1em;
+	right:0px;
+	width:1em;
+
+}
+
+.topleft{
+	position:absolute;
+	top:1em;
+	left:0px;
+	width:1em;
+
+}
+
+.panelleft{
+	background-color:rgba(225, 210,179,0.9);
+	padding: 0.5em;
+	border-radius: 15px;
+	margin:0.5em;
+	margin-left:1.5em;
+	float:left;
+}
+
+.panelright{
+	background-color:rgba(225, 210,179,0.9);
+	padding: 0.5em;
+	border-radius: 15px;
+	margin:0.5em;
+	margin-right:1.5em;
+	float:right;
+}
+
+.content{
+	width:18em;
+	font-size:0.8em
+}
+
+.ibtn{
+	text-align:right;
+	margin:0px;
+	float:right;
+}
+
+
+.deck{
+	position:absolute;
+	bottom:-70px;
+	overflow:hidden;
+
+
+}
+
+.cardcontrol{
+	position:absolute;
+	top:1em;
+	right:0.6em;
+	font-weight:bold;
+
+
+}
+
+.cardcounter{
+	pointer-events:none;
+	font-size:1.2em;
+}
+
+.fa{
+	cursor:pointer;
+	padding:0.1em;
+}
+
+.currentcard{
+	width:17em;
+	margin-top:-2.2em;
+	margin-bottom:1.2em;
+}
+
+.vpol{
+	fill: none;
+	stroke: none;
+	pointer-events: all;
+}
+#helpdeck{
+	position:absolute;
+	left:5em;
+	bottom:5em;
+	width:10em;
+	height:6em;
+}
+
+.chkim{padding:7px;background-color:rgb(225, 210,179);margin:3px;}
+.chkim:before { content:""; display:inline-block; width:20px; height:20px; }
+
+
+/* images */
+#rarity_epic:before { background: url("../img/unselected.svg"); background-color:rgb(225, 210,179); background-size:100%; }
+#rarity_epic:checked:before { background: url("../img/epic.svg"); background-color:rgb(225, 210,179); background-size:100%; opacity:1}
+
+#rarity_legendary:before { background: url("../img/unselected.svg"); background-color:rgb(225, 210,179); background-size:100%; }
+#rarity_legendary:checked:before { background: url("../img/legendary.svg"); background-color:rgb(225, 210,179); background-size:100%; opacity:1}
+
+#rarity_rare:before { background: url("../img/unselected.svg"); background-color:rgb(225, 210,179); background-size:100%; }
+#rarity_rare:checked:before { background: url("../img/rare.svg"); background-color:rgb(225, 210,179); background-size:100%; opacity:1}
+
+#rarity_common:before { background: url("../img/unselected.svg"); background-color:rgb(225, 210,179); background-size:100%; }
+#rarity_common:checked:before { background: url("../img/common.svg"); background-color:rgb(225, 210,179); background-size:100%; opacity:1}
+
+#rarity_free:before { background: url("../img/unselected.svg"); background-color:rgb(225, 210,179); background-size:100%; }
+#rarity_free:checked:before { background: url("../img/free.svg"); background-color:rgb(225, 210,179); background-size:100%; opacity:1}
+
+
+.check-cost:before { background: url("../img/unselected-cristal.svg"); background-color:rgb(225, 210,179); background-size:100%; }
+.check-cost:checked:before { background: url("../img/cristal.svg"); background-color:rgb(225, 210,179); background-size:100%; opacity:1}
+
+.label-cost{
+	position:relative;
+	left:-11px;
+	top:2px;
+	color:#fff;
+	pointer-events:none;
+	margin:0px
+	padding:0px
+}
+
+
+.exs{
+	position:relative;
+	top:-5px;
+	font-size:0.7em
+}
+
+.btn-primary{
+	background-color:#777 !important ;
+	border-color:#666 !important ;
+
+}
+
+.btn-primary:hover{
+	background-color:#999 !important;
+	border-color:#888 !important;
+}
+
+.btn-primary:active{
+	background-color:#999 !important;
+	border-color:#888 !important;
+        box-shadow: 0 0 0 0.2rem #888; 
+}
+
+
+.btn-primary:focus{
+	background-color:#999 !important;
+	border-color:#888 !important;
+        box-shadow: 0 0 0 0.2rem #888;
+}
+
+.btn:active{
+        box-shadow: 0 0 0 0.2rem #888;
+}
+
+
+.btn:focus{
+        box-shadow: 0 0 0 0.2rem #888;
+}
+.btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle{
+        box-shadow: 0 0 0 0.2rem #888;
+}
+
+}
+
+	h2{
+		line-height:1.5em;
+		font-weight:500;
+	}
+	.container p,ul{
+		font-size:1.2em;
+	}
+	p.lead{
+		font-size:1.1em;	
+	}
+	.head-top{
+		padding-top:1em;
+		padding-bottom:1em;
+		background-color:rgba(160, 138,110,1);
+		background-image: url('../img/img-header.png');
+		background-size:cover;
+		color:#fff;
+	}
+	.head-top h1{
+		font-weight:500;
+		font-size:4em;
+		font-weight:600;
+
+	}
+
+	.head-bottom{
+		background-color:#fff; 
+		/* background-color:rgba(160, 138,110,1); */
+		background-image: url('../img/cards-background-white.jpg');
+		background-size:100%;
+
+	}
+
+	.head-sub{
+		background-color:rgba(255, 255,255,0.1); 
+		padding:2em;
+
+	}
+.jumbotron{
+	margin-bottom:0px;	
+}
+
+
+.orange-red-text {
+    color: #ff4628;
+}
+
+.spark-standfirst, .spark-bar-medium {
+    font-family: "spark-bar-medium";
+    letter-spacing: 0em;
+}
+
+@font-face{
+		font-family:'spark-bar-medium';
+		src:url("../fonts/spark-bar-medium.eot");
+		src:url("../fonts/spark-bar-medium.eot?#iefix") format("embedded-opentype"),
+		url("../fonts/spark-bar-medium.woff2") format("woff2"),
+		url("../fonts/spark-bar-medium.woff") format("woff"),
+		url("../fonts/spark-bar-medium.ttf") format("truetype"),
+		url("../fonts/spark-bar-medium.svg#spark-bar-medium") format("svg");
+		font-weight:normal;
+		font-style:normal
+	}
+
+	#rfreedeck{
+		color:#333;
+	}
+	#rcommondeck{
+		color:#777;
+	}
+	#rraredeck{
+		color:#3c9cff
+	}
+	#repicdeck{
+		color:#e265ff;
+	}
+	#rlegendarydeck{
+		color:#f1951f;
+	}
+	.rvalue{
+		margin:0.3em;
+
+	}
+
+
+
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 1000px;
+}
+	/* flip the pane when hovered */
+	.flip-container:hover .flipper, .flip-container.hover .flipper {
+		transform: rotateY(180deg);
+	}
+
+.flip-container, .front, .back {
+	width: 143px;
+	height: 197px;
+}
+
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}

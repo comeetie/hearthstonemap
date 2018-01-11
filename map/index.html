@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>@comeetie : #Hearthstone cards map</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  </style>
+</head>
+
+<body style="height:100%;overflow:hidden;margin:0px">
+
+
+
+<div id="splash" style="display:none">
+	<div class="jumbotron head-top">
+		<div class="container" class="text-center">
+			<div class="row justify-content-center">
+				<div class="col-12 text-center">
+        <h1><span>Hearthstone </span><span> cards map</span></h1>
+	<h2> A ML enhanced map of heartstone cards</h2>
+	<br><br>
+	<p ><a class="btn btn-primary btn-lg mbtn" role="button" id="btn-explore" href="#map/u">Let me explore</a>  <a class="btn btn-primary btn-lg mbtn" role="button" id="btn-zoom" href="http://www.comeetie.fr/galerie/hearthstone/#map/2%20I%20Know%20a%20Guy%2C2%20Whirlwind%2C2%20Amani%20Berserker%2C2%20Armorsmith%2C2%20Battle%20Rage%2C2%20Execute%2C2%20Rampage%2C1%20Acolyte%20of%20Pain%2C2%20Frothing%20Berserker%2C1%20Raging%20Worgen%2C2%20Ravaging%20Ghoul%2C2%20Stonehill%20Defender%2C2%20Blood%20Razor%2C2%20Bloodhoof%20Brave%2C2%20Alley%20Armorsmith%2C2%20Bonemare"> Look at a deck</a>
+<a class="btn btn-primary btn-lg mbtn" role="button" id="btn-help" onclick="help()" href="#map/u">Take the guided tour</a></p>
+      				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container head-bottom" style="width:100%">
+	   
+		<div class="row justify-content-center" >
+	
+			<div class="col-6 align-self-center text-center head-sub">
+			<h1 style="color:#000">What</h1>
+			<p class="lead"> a map of heartstone cards based on 200 000 ranked games build with word-embedding and t-sne.</p>
+			<p><a class="btn btn-primary btn-lg mbtn" role="button" id="btn-about" href="#about/">+ infos &raquo;</a></p>
+			</div>
+
+	
+		</div>
+	      <hr>
+
+	      <footer>
+		<p>by <a href="http://www.comeetie.fr/about.php">@comeetie</a> 2017</p>
+	      </footer>
+	</div> <!-- /container -->
+</div>
+
+
+
+
+<div id="map" style="display:none;height:100%;overflow:hidden;padding:0px;margin:0px" >
+<svg width="100%" height="100%" viewBox="0 500 2000 2000" preserveAspectRatio="xMidYMid slice" id="canvas"></svg>
+
+<div class="topright">
+
+<div  class="panelright" id="infos">
+<div id="infos-button"><p style="text-align:right;margin:0"><i id="infos-open" class="fa fa-info-circle fa-fw fa-lg"></i></p></div>
+<div id="infos-content" class="content"><p style="text-align:right;margin:0"><i id="infos-close" class="fa fa-close"></i></p><div id="img" style="width:18em;margin:0px;"><img></img></div><span id="info"><h4>Card statistics :</h4><ul><li> Winrate: <li>Frequency: </ul></span></div></div>
+
+<div class="panelright" id="deckio" >
+<div id="deck-button"><p style="text-align:right;margin:0"><i id="infos-open" class="fa fa-book fa-fw fa-lg"></i></p></div>
+<div class="content" id="deck-content">
+<p style="text-align:right;margin:0"><i id="deck-close" class="fa fa-close"></i></p>
+<h4>Deck</h4>
+<p>
+<textarea class="form-control" id="deckcopypaste" rows="5">
+2 Frothing Berserker
+...
+</textarea></p>
+</div>
+</div>
+
+
+<a id="help-link" onClick="help()">
+<div class="panelright" id="help-button" >
+<p style="text-align:right;margin:0"><i class="fa fa-question-circle fa-fw fa-lg"></i></p>
+</div>
+</a>
+
+</div>
+
+
+
+
+
+<div class="topleft">
+<div class="panelleft" id="sel" >
+<div id="sel-button"><p style="text-align:right;margin:0"><i id="infos-open" class="fa fa-filter fa-fw fa-lg"></i></p></div>
+<div class="content" id="sel-content">
+<p style="text-align:right;margin:0"><i id="sel-close" class="fa fa-close"></i></p>
+<h4>Type</h4>
+<div class="form-check">
+<table>
+<tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-types" type="checkbox" value="MINION" checked>
+    Minions
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-types" type="checkbox" value="SPELL" checked>
+    Spells
+  </label></td></tr><tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-types" type="checkbox" value="ENCHANTMENT" checked>
+    Enchantments
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-types" type="checkbox" value="WEAPON" checked>
+    Weapons
+  </label></td></tr><tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-types" type="checkbox" value="HERO_POWER" checked>
+    Hero powers
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-types" type="checkbox" value="HERO" checked>
+    Heros
+  </label></td><tr>
+</table>
+</div>
+<h4> Rarity </h4>
+<p>
+<input type="checkbox" id="rarity_free" class="chkim check-rarity" value="FREE" checked/>
+<input type="checkbox" id="rarity_common" class="chkim check-rarity" value="COMMON" checked/>
+<input type="checkbox" id="rarity_rare" class="chkim check-rarity" value="RARE" checked/>
+<input type="checkbox" id="rarity_epic" class="chkim check-rarity" value="EPIC" checked/>
+<input type="checkbox" id="rarity_legendary" class="chkim check-rarity" value="LEGENDARY" checked/>
+</p>
+<h4> Cost </h4>
+<p>
+<input type="checkbox" class="chkim check-cost" value="1" checked/><span class="label-cost">1</span>
+<input type="checkbox" class="chkim check-cost" value="2" checked/><span class="label-cost">2</span>
+<input type="checkbox" class="chkim check-cost" value="3" checked/><span class="label-cost">3</span>
+<input type="checkbox" class="chkim check-cost" value="4" checked/><span class="label-cost">4</span>
+<input type="checkbox" class="chkim check-cost" value="5" checked/><span class="label-cost">5</span>
+<input type="checkbox" class="chkim check-cost" value="6" checked/><span class="label-cost">6</span>
+<input type="checkbox" class="chkim check-cost" value="7" checked/><span class="label-cost">7</span>
+<input type="checkbox" class="chkim check-cost" value="8" checked/><span class="label-cost">8</span>
+<input type="checkbox" class="chkim check-cost" value="9" checked/><span class="label-cost">9<span class="exs">+</span></span>
+</p>
+<h4>Races</h4>
+<div class="form-check">
+<table>
+<tr><td>
+
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="BEAST" checked>
+    Beasts
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="MECHANICAL" checked>
+    Mechs
+  </label></td></tr><tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="ELEMENTAL" checked>
+    Elementals
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="DEMON" checked>
+    Daemons
+  </label></td></tr><tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="DRAGON" checked>
+    Dragons
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="MURLOC" checked>
+    Murlocs
+  </label></td></tr><tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="PIRATE" checked>
+    Pirates
+  </label></td><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="TOTEM" checked>
+    Totems
+  </label>
+</td></tr><tr><td>
+  <label class="form-check-label">
+    <input class="form-check-input check-races" type="checkbox" value="" checked>
+    None
+  </label>
+</td></tr>
+</table>
+</div>
+</div>
+
+</div>
+<div class="panelleft" id="deckstats" >
+<div id="deckstats-button"><p style="text-align:right;margin:0"><i id="deckstats-open" class="fa fa-area-chart fa-fw fa-lg"></i></p></div>
+<div class="content" id="deckstats-content">
+<p style="text-align:right;margin:0"><i id="deckstats-close" class="fa fa-close"></i></p>
+<h4>Deck</h4>
+<p>
+<span id="nbcard"></span> cards, with
+<span id="nbuniqcard"></span> unique cards :
+<table>
+<tr><td>Cost: </td><td><span id="deckcosthist" class="spark-standfirst">123{10,20,30,40,50,60,70,80,90,100}789</span></span></td></tr>
+<tr><td>Rarity:</td><td><span id="rfreedeck" class="rvalue">5</span><span id="rcommondeck" class="rvalue">10</span><span id="rraredeck" class="rvalue"></span></span>20<span id="repicdeck" class="rvalue"></span></span><span id="rlegendarydeck" class="rvalue"></span></td><tr>
+</table>
+</p>
+<p>Mechanics:</br><span id="deckmechs"></span></p>
+<p>Types:</br><span id="decktypes"></span></p>
+</div>
+</div>
+
+<a id="twitter-link">
+<div class="panelleft" id="twitter-button" >
+<p style="text-align:right;margin:0;color:black"><i id="deckstats-open" class="fa fa-twitter fa-fw fa-lg"></i></p>
+</div>
+</a>
+</div>
+
+
+
+</div>
+
+<div >
+
+</div>
+
+
+
+
+
+<div id="about" style="display:none;" >
+<div class="marketing container white">
+
+			<div class="row justify-content-center">
+				<div class="col-6">
+<h1 style="margin-top:4em;margin-bottom:2em">About</h1>
+<p>
+This map is based on 200 000 ranked hearthstone games. This coressponds to more than 4 000 000 cards played and recorded by <a href="http://www.hearthscry.com/CollectOBot">collecto-bot</a> over one year and an half.
+  </p>
+<p>
+Using this dataset we constructed 400 000 series of played cards one for each player in a game. These series were fed to a word2vec embedding [<a href="https://arxiv.org/abs/1301.3781">Mikolov, Tomas et al</a>] algorithm (with negative sampling [<a href="https://arxiv.org/abs/1402.3722">Goldberg, Yoav; Levy, Omer</a>] and a single soft-plus final layer) to learn 64 dimensional vectors for embeding all the 1600 cards. The final 2d projection was derived from these vectors using a t-sne [<a href="http://jmlr.csail.mit.edu/papers/volume9/vandermaaten08a/vandermaaten08a.pdf">Van der Maaten, Laurens ; Hinton, Geoffrey </a>] with default settings. The code is available on <a href="">github</a>. The same dataset was used to estimate winrates and frequency of each card.  
+</p><p>
+The interface is build using, <a href="https://d3js.org/">d3</a>, a lot of love, a bit of <a href="http://backbonejs.org/">backbone</a> and some <a href="https://github.com/HearthSim/hsdata">data</a> and <a href="https://github.com/schmich/hearthstone-card-images">images</a> collected by the huge community around hearthstone. 
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<link href="https://fonts.googleapis.com/css?family=Noticia+Text|Playfair+Display" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+<link rel="stylesheet" href="./assets/css/font-awesome.css" />
+  <link href="./assets/css/introjs.css" rel="stylesheet">
+<link href="./assets/css/custom.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.js"></script>
+  <script src="http://code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script>
+  <script src="./assets/js/intro.js"></script>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+ <script src="./assets/js/app.js"></script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36516444-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   version="1.1"
+   id="svg2"
+   viewBox="0 0 96 95"
+   height="95"
+   width="96">
+  <metadata
+     id="metadata27">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>free</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <title
+     id="title4">free</title>
+  <defs
+     id="defs6">
+    <radialGradient
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.0020506,0,0,0.99795355,2.099,2)"
+       id="a"
+       r="49.367163"
+       fy="33.444237"
+       fx="61.083866"
+       cy="33.444237"
+       cx="61.083866">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1"
+         id="stop9"
+         offset="0%"
+         stop-color="#444" />
+      <stop
+         style="stop-color:#93979a;stop-opacity:1"
+         id="stop11"
+         offset="100%"
+         stop-color="#606568" />
+    </radialGradient>
+  </defs>
+  <path
+     d="M 47.924,93.264 C 73.233,93.264 93.75,72.834 93.75,47.632 93.749,22.43 73.233,2 47.924,2 22.616,2 2.099,22.43 2.099,47.632 c 0,25.202 20.517,45.632 45.825,45.632 z"
+     id="path15"
+     style="fill:url(#a);fill-rule:evenodd;stroke:#000000;stroke-width:3" />
+  <path
+     d="M 31.655,13.886 A 37.27,37.27 0 0 1 46.83,10.68 c 20.582,0 37.268,16.615 37.268,37.11 0,8.896 -3.143,17.06 -8.384,23.453 C 58.409,63.912 31.679,59.159 31.654,13.886 Z"
+     id="path17"
+     style="opacity:0.37900002;fill:#131c26;fill-rule:evenodd" />
+  <path
+     d="M 40.97,6.213 A 42.285,42.285 0 0 1 47.68,5.68 c 23.092,0 41.81,18.64 41.81,41.634 0,10.874 -4.186,20.775 -11.043,28.19 0.49,-1.71 0.938,-3.482 1.342,-5.32 C 91.281,17.855 60.493,62.344 49.641,17.855 48.311,12.401 45.274,8.597 40.97,6.213 Z"
+     id="path19"
+     style="opacity:0.25200004;fill:#ffffff;fill-rule:evenodd" />
+  <path
+     d="m 72.315,29.406 c -1.553,-6.827 -7.086,-12.15 -14.043,-13.422 0.03,0.199 0.058,0.401 0.083,0.607 2.1,16.949 9.169,13.609 13.96,12.815 z"
+     id="path21"
+     style="fill:#ffffff;fill-rule:evenodd" />
+  <path
+     d="M 13.95,32.968"
+     id="path23"
+     style="opacity:0.278;fill:#ffffff;fill-rule:evenodd" />
+</svg>
